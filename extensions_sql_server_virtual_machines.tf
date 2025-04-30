@@ -1,54 +1,23 @@
 locals {
   log_analytics_policies = {
-    mdc-log-analytics-arc1-autoprovisioning = {
+    mdc-log-analytics-arc1-autoprovisioning-sql = {
       definition_display_name = "[Preview]: Configure Azure Arc-enabled Windows machines with Log Analytics agents connected to default Log Analytics workspace"
     }
-    mdc-log-analytics-arc2-autoprovisioning = {
+    mdc-log-analytics-arc2-autoprovisioning-sql = {
       definition_display_name = "[Preview]: Configure Azure Arc-enabled Linux machines with Log Analytics agents connected to default Log Analytics workspace"
     }
   }
   log_analytics_roles = {
     sql-server-virtual-machines-arc1-role-1 = {
       name   = "Contributor"
-      policy = "mdc-log-analytics-arc1-autoprovisioning"
+      policy = "mdc-log-analytics-arc1-autoprovisioning-sql"
     }
     sql-server-virtual-machines-arc2-role-1 = {
       name   = "Contributor"
-      policy = "mdc-log-analytics-arc2-autoprovisioning"
+      policy = "mdc-log-analytics-arc2-autoprovisioning-sql"
     }
   }
-  sql_server_virtual_machines_enabled = contains(local.final_plans_list, "SqlServerVirtualMachines") && !contains(var.mdc_plans_list, "VirtualMachines")
-  mdc_sql_policies = {
-    mdc-sql-autoprovisioning = {
-      definition_display_name = "Configure SQL VMs and Arc-enabled SQL Servers to install Microsoft Defender for SQL and AMA with a LA workspace"
-    }
-  }
-  mdc_sql_roles = {
-    mdc-sql-autoprovisioning-role-1 = {
-      name   = "Contributor"
-      policy = "mdc-sql-autoprovisioning"
-    }
-    mdc-sql-autoprovisioning-role-2 = {
-      name   = "Azure Connected Machine Resource Administrator"
-      policy = "mdc-sql-autoprovisioning"
-    }
-    mdc-sql-autoprovisioning-role-3 = {
-      name   = "Log Analytics Contributor"
-      policy = "mdc-sql-autoprovisioning"
-    }
-    mdc-sql-autoprovisioning-role-4 = {
-      name   = "Monitoring Contributor"
-      policy = "mdc-sql-autoprovisioning"
-    }
-    mdc-sql-autoprovisioning-role-5 = {
-      name   = "User Access Administrator"
-      policy = "mdc-sql-autoprovisioning"
-    }
-    mdc-sql-autoprovisioning-role-6 = {
-      name   = "Virtual Machine Contributor"
-      policy = "mdc-sql-autoprovisioning"
-    }
-  }
+  sql_server_virtual_machines_enabled = contains(local.plans_without_databases, "SqlServerVirtualMachines") && !contains(var.mdc_plans_list, "VirtualMachines")
 }
 
 # Enabling extension - Log Analytics for arc
@@ -70,17 +39,6 @@ resource "azurerm_subscription_policy_assignment" "sql" {
   identity {
     type = "SystemAssigned"
   }
-
-  depends_on = [
-    azurerm_security_center_subscription_pricing.asc_plans["SqlServerVirtualMachines"]
-  ]
-}
-
-# Enabling extension - Log Analytics for vm
-resource "azurerm_security_center_auto_provisioning" "la_auto_provisioning" {
-  count = local.sql_server_virtual_machines_enabled ? 1 : 0
-
-  auto_provision = "On"
 
   depends_on = [
     azurerm_security_center_subscription_pricing.asc_plans["SqlServerVirtualMachines"]

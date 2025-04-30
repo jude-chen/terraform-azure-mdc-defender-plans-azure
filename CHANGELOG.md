@@ -1,27 +1,13 @@
 # Changelog
 
-## [Unreleased](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/tree/HEAD)
+## [v3.0.0](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/tree/v3.0.0) (2024-12-02)
 
 **Merged pull requests:**
 
-- Bump golang.org/x/crypto from 0.14.0 to 0.17.0 in /test [\#53](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/53) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump github.com/gruntwork-io/terratest from 0.46.6 to 0.46.8 in /test [\#52](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/52) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump github.com/gruntwork-io/terratest from 0.46.1 to 0.46.6 in /test [\#50](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/50) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Add a setup step to clean all potential existing plans before test [\#49](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/49) ([lonegunmanb](https://github.com/lonegunmanb))
-- Bump github.com/Azure/terraform-module-test-helper from 0.16.0 to 0.17.0 in /test [\#47](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/47) ([dependabot[bot]](https://github.com/apps/dependabot))
-
-## [v1.0.0](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/tree/v1.0.0) (2023-10-31)
-
-**Merged pull requests:**
-
-- Readme note update [\#46](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/46) ([elibetito-microsoft](https://github.com/elibetito-microsoft))
-- Add `ignore_changes` to telemetry resource [\#45](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/45) ([lonegunmanb](https://github.com/lonegunmanb))
-- Add telemetry collection resource to this module [\#43](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/43) ([lonegunmanb](https://github.com/lonegunmanb))
-- Bump github.com/gruntwork-io/terratest from 0.43.13 to 0.46.1 in /test [\#42](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/42) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Rename to CHANGELOG-v0 and add a black CHANGELOG [\#41](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/41) ([elibetito-microsoft](https://github.com/elibetito-microsoft))
-- README: Already Onboarded Subscriptions Update [\#34](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/34) ([elibetito-microsoft](https://github.com/elibetito-microsoft))
-- Bump github.com/gruntwork-io/terratest from 0.43.12 to 0.43.13 in /test [\#33](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/33) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Added additional\_extension\_properties for virtual machines plans [\#32](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/32) ([elibetito-microsoft](https://github.com/elibetito-microsoft))
+- Prepare CHANGELOG-v2 for v3.0.0 release [\#99](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/99) ([elibetito-microsoft](https://github.com/elibetito-microsoft))
+- Bump github.com/stretchr/testify from 1.9.0 to 1.10.0 in /test [\#98](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/98) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Stabilize e2e test [\#97](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/97) ([lonegunmanb](https://github.com/lonegunmanb))
+- Delete azurerm\_security\_center\_auto\_provisioning from SQL Server VM [\#96](https://github.com/Azure/terraform-azure-mdc-defender-plans-azure/pull/96) ([elibetito-microsoft](https://github.com/elibetito-microsoft))
 
 
 

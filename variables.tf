@@ -11,6 +11,17 @@ variable "default_tier" {
   nullable    = false
 }
 
+variable "enable_telemetry" {
+  type        = bool
+  default     = true
+  description = <<DESCRIPTION
+This variable controls whether or not telemetry is enabled for the module.
+For more information see https://aka.ms/avm/telemetryinfo.
+If it is set to false, then no telemetry will be collected.
+DESCRIPTION
+  nullable    = false
+}
+
 variable "location" {
   type        = string
   default     = "West Europe"
@@ -47,6 +58,12 @@ variable "mdc_plans_list" {
   ]
   description = "(Optional) Set of all MDC plans"
   nullable    = false
+}
+
+variable "storage_accounts_malware_scan_cap_gb_per_month" {
+  type        = string
+  default     = "5000"
+  description = "(Optional) Sets the maximum GB limit for malware scanning on uploaded files per storage account per month"
 }
 
 variable "subplans" {

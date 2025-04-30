@@ -24,6 +24,7 @@ func TestExamples_single_subscription(t *testing.T) {
 		"CosmosDbs",
 		"StorageAccounts",
 		"Api",
+		"VirtualMachines",
 	}
 	vars := map[string]interface{}{
 		"mdc_plans_list": plans,
@@ -66,6 +67,9 @@ func cleanAllExistingPlans(t *testing.T, moduleRoot string, examplePath string, 
 	for _, p := range plans {
 		command := terraform.RunTerraformCommand(t, opt, "import", fmt.Sprintf(`module.mdc_plans_enable.azurerm_security_center_subscription_pricing.asc_plans["%s"]`, p), fmt.Sprintf(`/subscriptions/%s/providers/Microsoft.Security/pricings/%s`, subId, p))
 		println(command)
+	}
+	opt.RetryableTerraformErrors = map[string]string{
+		".*": "Retry destroy on any error",
 	}
 	terraform.Destroy(t, opt)
 }
